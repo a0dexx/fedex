@@ -1,0 +1,56 @@
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        type="firstName"
+        matInput
+        placeholder="First Name"
+        formControlName="firstName">
+      <mat-hint>Please enter a first name</mat-hint>
+      <mat-error>Invalid or missing first name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="lastName"
+        matInput
+        placeholder="Last Name"
+        formControlName="lastName">
+      <mat-hint>Please enter a last name</mat-hint>
+      <mat-error>Invalid or missing last name</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Your email"
+        formControlName="email">
+      <mat-hint>Please enter a valid email.</mat-hint>
+      <mat-error>Invalid or missing email.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="Your password"
+        formControlName="password">
+      <mat-hint>Please enter your password.</mat-hint>
+      <!--      <mat-error>Password must be 8 characters and contain uppercase and lowercase letters</mat-error>-->
+
+      <mat-error *ngIf="loginForm.controls.password.hasError('passwordContainsNames')"> Password must not contain first name or last name</mat-error>
+      <mat-error *ngIf="loginForm.controls.password.hasError('pattern')"> Password must be at least 8 characters with upper and lower case letters</mat-error>
+    </mat-form-field>
+
+    {{loginForm.errors}}
+
+
+
+    <!--    <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>-->
+    <button type="submit" mat-raised-button color="primary" >Submit</button>
+  </form>
+</section>
