@@ -19,10 +19,10 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.loginForm = new FormGroup({
       firstName: new FormControl('', {
-        validators: [Validators.required,]
+        validators: [Validators.required, Validators.minLength(2)]
       }),
       lastName: new FormControl('', {
-        validators: [Validators.required,]
+        validators: [Validators.required, Validators.minLength(2)]
       }),
 
       email: new FormControl('', {
@@ -31,29 +31,19 @@ export class SignupComponent implements OnInit {
       password: new FormControl('', {
         validators: [
           Validators.required,
-
           Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$')
-
-
         ]
       }),
 
-
-    }, {validators:  this.customValidator.validatePassword('firstName', 'lastName', 'password')});
+    }, { validators: this.customValidator.validatePassword('firstName', 'lastName', 'password') });
   }
-
-
 
 
   onSubmit() {
 
-    console.log(this.loginForm.controls.password.errors);
-    console.log(this.loginForm);
-
     this.authService.login({
       firstName: this.loginForm.value.firstName,
       lastName: this.loginForm.value.lastName,
-
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     });

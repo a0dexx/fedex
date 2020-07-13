@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs/Subject';
 
+import { Subject } from 'rxjs';
 import { User } from './user.model';
 import { AuthData } from './auth-data.model';
 import { UserData } from './user-data.model';
 import { HttpClient } from '@angular/common/http';
-
 
 
 @Injectable()
@@ -14,7 +13,8 @@ export class AuthService {
   authChange = new Subject<boolean>();
   private user;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) {
+  }
 
   registerUser(authData: AuthData) {
     this.user = {
@@ -41,13 +41,12 @@ export class AuthService {
       .subscribe(() => {
         console.log('success');
 
-       this.authSuccessfully();
-      },error => {
+        // this.authSuccessfully();
+      }, error => {
         console.log(error);
       });
 
   }
-
 
 
   logout() {

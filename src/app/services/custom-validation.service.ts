@@ -31,7 +31,6 @@ export class CustomValidationService {
 
 
       if (!firstNameControl.value || !lastNameControl.value || !passwordControl.value) {
-        console.log('one of yor fields emtyo');
         return null;
       }
 
