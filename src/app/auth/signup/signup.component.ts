@@ -11,6 +11,7 @@ import { CustomValidationService } from '../../services/custom-validation.servic
 
 })
 export class SignupComponent implements OnInit {
+
   loginForm: FormGroup;
 
   constructor(private authService: AuthService, private customValidator: CustomValidationService) {
@@ -21,6 +22,7 @@ export class SignupComponent implements OnInit {
       firstName: new FormControl('', {
         validators: [Validators.required, Validators.minLength(2)]
       }),
+
       lastName: new FormControl('', {
         validators: [Validators.required, Validators.minLength(2)]
       }),
@@ -28,20 +30,19 @@ export class SignupComponent implements OnInit {
       email: new FormControl('', {
         validators: [Validators.required, Validators.email]
       }),
+
       password: new FormControl('', {
         validators: [
           Validators.required,
           Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$')
         ]
       }),
-
     }, { validators: this.customValidator.validatePassword('firstName', 'lastName', 'password') });
   }
 
-
   onSubmit() {
 
-    this.authService.login({
+    this.authService.signup({
       firstName: this.loginForm.value.firstName,
       lastName: this.loginForm.value.lastName,
       email: this.loginForm.value.email,

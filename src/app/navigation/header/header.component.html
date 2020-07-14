@@ -5,17 +5,19 @@
     </button>
   </div>
   <div>
-    <a routerLink="/">Coding Challenge</a>
+    <a routerLink="/">Fedex - Coding Challenge</a>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+      <li>
+        <a routerLink="/">Home</a>
+      </li>
       <li *ngIf="!isAuth">
         <a routerLink="/signup">Signup</a>
       </li>
       <li *ngIf="!isAuth">
         <a routerLink="/login">Login</a>
       </li>
-
       <li *ngIf="isAuth">
         <a style="cursor: pointer" (click)="onLogout()">Logout</a>
       </li>

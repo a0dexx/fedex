@@ -18,6 +18,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { AuthService } from './auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomValidationService } from './services/custom-validation.service';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -30,6 +31,7 @@ import { CustomValidationService } from './services/custom-validation.service';
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
+    HomeComponent,
 
   ],
   imports: [
