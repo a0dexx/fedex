@@ -6,8 +6,9 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { Router } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import {  FormsModule } from "@angular/forms";
 
+import { MaterialModule } from '../../material.module';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -19,8 +20,9 @@ describe('LoginComponent', () => {
       imports: [
         NoopAnimationsModule,
         AppRoutingModule,
-         FormsModule,
-        ],
+        FormsModule,
+        MaterialModule
+      ],
       declarations: [LoginComponent],
       providers: [{ provide: AuthService, useValue: authServiceSpy }, AppRoutingModule]
     })

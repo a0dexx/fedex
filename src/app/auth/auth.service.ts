@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
 import { User } from './user.model';
+
 import { AuthData } from './auth-data.model';
 import { UserData } from './user-data.model';
 import { HttpClient } from '@angular/common/http';
@@ -16,7 +17,7 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient) {
   }
 
-  registerUser(authData: AuthData) {
+  loginUser(authData: AuthData) {
     this.user = {
 
       email: authData.email,
@@ -31,7 +32,6 @@ export class AuthService {
       lastName: userData.lastName,
       email: userData.email,
       password: userData.password
-      // userId: Math.round(Math.random() * 10000).toString()
     };
 
     this.user = {};
@@ -41,7 +41,7 @@ export class AuthService {
       .subscribe(() => {
         console.log('success');
 
-        // this.authSuccessfully();
+         this.authSuccessfully();
       }, error => {
         console.log(error);
       });
