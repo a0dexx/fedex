@@ -28,7 +28,6 @@ export class AuthService {
 
   loginUser(authData: AuthData) {
 
-
     //this needs to be implemented! for now log result and authorize successfully
     this.user = {
       email: authData.email,
