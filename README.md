@@ -26,9 +26,11 @@ It is very important to note, there is NOT full test coverage.  Just enough to s
 
 Any questions, please feel free to contact me.
 
+(Please not, this is tested and working for latest versions of Chrome and Firefox browsers)
+
 ## Make sure you have node installed. 
 
-This app is tested using node v12
+This app is tested using node v12.
 
 ## Install the angular CLI 
 
