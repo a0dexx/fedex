@@ -26,7 +26,13 @@ It is very important to note, there is NOT full test coverage.  Just enough to s
 
 Any questions, please feel free to contact me.
 
+# Make sure you have node installed. 
 
+This app is tested using node v12 
+
+# Install the angular CLI 
+
+Run `npm install -g @angular/cli`
 
 ## Development server
 

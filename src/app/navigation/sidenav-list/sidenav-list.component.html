@@ -13,6 +13,11 @@
     <span class="nav-caption">Home</span>
   </a>
 
+  <a mat-list-item routerLink="/" (click)="onClose()" *ngIf="isAuth">
+    <mat-icon>account_box</mat-icon>
+    <span class="nav-caption">Welcome</span>
+  </a>
+
   <mat-list-item>
     <button mat-icon-button (click)="onLogout()" *ngIf="isAuth">
       <mat-icon>eject</mat-icon>

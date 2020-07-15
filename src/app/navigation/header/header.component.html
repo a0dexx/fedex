@@ -12,12 +12,16 @@
       <li>
         <a routerLink="/">Home</a>
       </li>
+      <li *ngIf="isAuth">
+        <a routerLink="/welcome">Welcome</a>
+      </li>
       <li *ngIf="!isAuth">
         <a routerLink="/signup">Signup</a>
       </li>
       <li *ngIf="!isAuth">
         <a routerLink="/login">Login</a>
       </li>
+
       <li *ngIf="isAuth">
         <a style="cursor: pointer" (click)="onLogout()" id="logout">Logout</a>
       </li>

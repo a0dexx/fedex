@@ -6,6 +6,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../material.module';
+import { APP_BASE_HREF } from '@angular/common';
 
 
 describe('SignupComponent', () => {
@@ -22,7 +23,10 @@ describe('SignupComponent', () => {
         MaterialModule
       ],
       declarations: [SignupComponent],
-      providers: [{ provide: AuthService, useValue: authServiceSpy }, AppRoutingModule]
+      providers: [{ provide: AuthService, useValue: authServiceSpy }, {
+        provide: APP_BASE_HREF,
+        useValue: '/'
+      }, AppRoutingModule]
     })
       .compileComponents();
   }));
@@ -144,13 +148,13 @@ describe('SignupComponent', () => {
 
     password.setValue('boblLLEIDadg');
     errors = password.errors || {};
-    console.log('name err', errors);
+
     expect(errors['passwordContainsNames']).toBeTruthy();
 
     // Set password containing last name
     password.setValue('smithlLLEIDadg');
     errors = password.errors || {};
-    console.log('name err', errors);
+
     expect(errors['passwordContainsNames']).toBeTruthy();
 
   });
