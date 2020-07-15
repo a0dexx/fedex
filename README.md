@@ -28,7 +28,7 @@ Any questions, please feel free to contact me.
 
 ## Make sure you have node installed. 
 
-This app is tested using node v12 
+This app is tested using node v12
 
 ## Install the angular CLI 
 
@@ -43,6 +43,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
 
 ## Running end-to-end tests
 
