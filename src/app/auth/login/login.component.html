@@ -5,6 +5,7 @@
     fxLayoutGap="10px"
     #f="ngForm"
     (ngSubmit)="onSubmit(f)">
+
     <mat-form-field>
       <input
         id="email"
@@ -19,6 +20,7 @@
       <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty.</mat-error>
       <mat-error *ngIf="!emailInput.hasError('required')">E-Mail is invalid.</mat-error>
     </mat-form-field>
+
     <mat-form-field hintLabel="Should be at least 8 characters long.">
       <input
         id="password"

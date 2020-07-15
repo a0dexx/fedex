@@ -18,5 +18,4 @@ export class LoginComponent {
       password: form.value.password
     });
   }
-
 }

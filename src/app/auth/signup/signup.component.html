@@ -5,6 +5,7 @@
     fxLayoutGap="10px"
     [formGroup]="loginForm"
     (ngSubmit)="onSubmit()">
+
     <mat-form-field>
       <input
         id="firstName"
@@ -26,6 +27,7 @@
       <mat-hint>Please enter a last name</mat-hint>
       <mat-error>Invalid or missing last name</mat-error>
     </mat-form-field>
+
     <mat-form-field>
       <input
         id="email"
@@ -36,6 +38,7 @@
       <mat-hint>Please enter a valid email.</mat-hint>
       <mat-error>Invalid or missing email.</mat-error>
     </mat-form-field>
+
     <mat-form-field>
       <input
         id="password"
@@ -44,7 +47,6 @@
         placeholder="Your password"
         formControlName="password">
       <mat-hint>Please enter your password.</mat-hint>
-
       <mat-error *ngIf="loginForm.controls.password.hasError('passwordContainsNames')"> Password must not contain first
         name or last name
       </mat-error>
@@ -53,7 +55,7 @@
       </mat-error>
     </mat-form-field>
 
-
     <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
+
   </form>
 </section>
