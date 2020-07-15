@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { Subject } from 'rxjs';
-import { User } from './user.model';
-
 import { AuthData } from './auth-data.model';
 import { UserData } from './user-data.model';
 import { HttpClient } from '@angular/common/http';
@@ -26,9 +23,9 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient, private snackbar: MatSnackBar) {
   }
 
-  loginUser(authData: AuthData) {
+  login(authData: AuthData) {
 
-    //this needs to be implemented! for now log result and authorize successfully
+    //this needs to be implemented! for now set user and authorize successfully
     this.user = {
       email: authData.email,
       password: authData.password
@@ -36,7 +33,7 @@ export class AuthService {
     this.authSuccessfully();
   }
 
-  signup(userData: UserData) {
+  signUp(userData: UserData) {
     this.user = {
       firstName: userData.firstName,
       lastName: userData.lastName,
@@ -48,13 +45,14 @@ export class AuthService {
       .subscribe(() => {
         this.authSuccessfully();
       }, error => {
-        //show a simple snackbar if the request fails
+        // show a simple snackbar if the request fails
+        // to trigger this snackbar change 'this.endpoint' to this.errorEndpoint
         console.log(error);
         this.showSnackbar('Unable to Sign In', '', 3000);
       });
   }
 
-  logout() {
+  logOut() {
     this.user = null;
     this.authChange.next(false);
     this.router.navigate(['/']);

@@ -94,15 +94,12 @@ describe('SignupComponent', () => {
     // Email field is required
     errors = email.errors || {};
     expect(errors['required']).toBeTruthy();
-    //
 
-    // // Set email to something not valid
+    // Set email to something not valid
     email.setValue("test");
-
     errors = email.errors || {};
     expect(errors['required']).toBeFalsy();
     expect(errors['email']).toBeTruthy();
-
 
     // Set email to something valid
     email.setValue("test@example.com");
@@ -116,22 +113,17 @@ describe('SignupComponent', () => {
     let errors = {};
     let password = component.loginForm.controls['password'];
 
-
     expect(password.valid).toBeFalsy();
     // password field is required
     errors = password.errors || {};
 
     expect(errors['required']).toBeTruthy();
 
-
-    // console.log('check pasqwwrod er',errors);
-
     //  Set password to something lsess than 8 charchers
     password.setValue('es');
     errors = password.errors || {};
 
     expect(errors['pattern']).toBeTruthy();
-
 
     // Set password to 8+ characters but no uppercase
     password.setValue('eskasdldkass');
@@ -152,18 +144,16 @@ describe('SignupComponent', () => {
 
     password.setValue('boblLLEIDadg');
     errors = password.errors || {};
-    console.log('name err',errors);
+    console.log('name err', errors);
     expect(errors['passwordContainsNames']).toBeTruthy();
 
     // Set password containing last name
     password.setValue('smithlLLEIDadg');
     errors = password.errors || {};
-    console.log('name err',errors);
+    console.log('name err', errors);
     expect(errors['passwordContainsNames']).toBeTruthy();
 
   });
-
-
 
 
 });

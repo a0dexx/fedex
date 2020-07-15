@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
 
-    this.authService.signup({
+    this.authService.signUp({
       firstName: this.loginForm.value.firstName,
       lastName: this.loginForm.value.lastName,
       email: this.loginForm.value.email,

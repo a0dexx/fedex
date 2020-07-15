@@ -44,7 +44,6 @@
         placeholder="Your password"
         formControlName="password">
       <mat-hint>Please enter your password.</mat-hint>
-      <!--      <mat-error>Password must be 8 characters and contain uppercase and lowercase letters</mat-error>-->
 
       <mat-error *ngIf="loginForm.controls.password.hasError('passwordContainsNames')"> Password must not contain first
         name or last name
@@ -56,6 +55,5 @@
 
 
     <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
-    <!--    <button type="submit" mat-raised-button color="primary">Submit</button>-->
   </form>
 </section>

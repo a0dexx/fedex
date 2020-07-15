@@ -7,28 +7,14 @@ import { FormGroup } from '@angular/forms';
 })
 export class CustomValidationService {
 
-  // patternValidator(): ValidatorFn {
-  //   return (control: AbstractControl): { [key: string]: any } => {
-  //     if (!control.value) {
-  //       return null;
-  //     }
-  //     // const regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
-  //     const regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])');
-  //     const valid = regex.test(control.value);
-  //     return valid ? null : { invalidPasswommrd: true };
-  //   };
-  // }
-
-
+  // check to see password does not contain first name or last name
   validatePassword(firstName: string, lastName: string, password: string) {
-
 
     return (formGroup: FormGroup) => {
 
       const firstNameControl = formGroup.controls[firstName];
       const lastNameControl = formGroup.controls[lastName];
       const passwordControl = formGroup.controls[password];
-
 
       if (!firstNameControl.value || !lastNameControl.value || !passwordControl.value) {
         return null;
@@ -38,32 +24,16 @@ export class CustomValidationService {
         return null;
       }
 
-      if (passwordControl.value.toUpperCase().includes(firstNameControl.value.toUpperCase())
-            ||passwordControl.value.toUpperCase().includes(lastNameControl.value.toUpperCase())) {
+      const upperCasePassword = passwordControl.value.toUpperCase();
+      const upperCaseFirstName = firstNameControl.value.toUpperCase();
+      const upperCaseLastName = lastNameControl.value.toUpperCase();
 
-        //
-        // console.log('from validator', passwordControl.value.includes(firstNameControl.value));
-        // console.log('inital error array', passwordControl.errors);
-        //
-        // const newError = { ...passwordControl.errors, passwordContainsNames: true };
-
-        // console.log('new err', newError);
+      if (upperCasePassword.includes(upperCaseFirstName) || upperCasePassword.includes(upperCaseLastName)) {
         passwordControl.setErrors({ passwordContainsNames: true });
-        // passwordControl.setErrors(newError);
-
-
-      }
-      //
-      // else if (passwordControl.value.includes(lastNameControl.value)) {
-      //   console.log('from validator', passwordControl.value.includes(firstNameControl.value));
-      //
-      //
-      //   passwordControl.setErrors({ ...passwordControl.errors }, { passwordContainsLastName: true });
-      // }
-
-      else {
+      } else {
         passwordControl.setErrors(null);
       }
+
     }
   }
 
