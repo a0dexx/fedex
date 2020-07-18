@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { AuthData } from './auth-data.model';
-import { UserData } from './user-data.model';
+import { AuthData } from '../auth/auth-data.model';
+import { UserData } from '../auth/user-data.model';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
