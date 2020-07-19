@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 import { AuthData } from '../auth/auth-data.model';
 import { UserData } from '../auth/user-data.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
   authChange = new Subject<boolean>();
@@ -33,7 +36,7 @@ export class AuthService {
     this.authSuccessfully();
   }
 
-  signUp(userData: UserData) {
+  signUp(userData: UserData, endpoint = this.endpoint) {
     this.user = {
       firstName: userData.firstName,
       lastName: userData.lastName,
@@ -41,13 +44,17 @@ export class AuthService {
       password: userData.password
     };
 
-    this.http.post(this.endpoint, this.user)
-      .subscribe(() => {
+    return this.http.post<any>(endpoint, this.user)
+      .pipe(map(res => {
+        if (res == null) {
+          return { success: true, message: 'login was successful' };
+        }
+      }))
+      .subscribe(res => {
         this.authSuccessfully();
-      }, error => {
+      }, (error: HttpErrorResponse) => {
         // show a simple snackbar if the request fails
         // to trigger this snackbar change 'this.endpoint' to this.errorEndpoint
-        console.log(error);
         this.showSnackbar('Unable to Sign In', '', 3000);
       });
   }
